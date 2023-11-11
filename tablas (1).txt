@@ -1,0 +1,23 @@
+create table MUNICIPIOS (codMunicipio numeric not null primary key,
+Municipio varchar(20) not null)
+
+create table HOSPITALES( Id_Hospital  numeric not null primary key,  CodMunicipios numeric not null, NitInstituciones numeric not null, NombreRrepresentantelegal varchar(50) not null, NievelComplejidad varchar(100) not null, fax  varchar(15) not null, Correoelectronico varchar(100), foreign key(CodMunicipios) references municipios(CodMunicipio)
+
+create table PACIENTES( Id_Paciente numeric not null primary key, Poblacion varchar(20) not null, Nombre varchar(20) not null, Apellido varchar(20) not null , Sexo char(1) not null, 
+Fecha_Nac date not null, Direccion varchar(100) not null, Telefono varchar(20)not null )
+
+create table MEDICOS( Id_medico numeric not null primary key, Nombre varchar(20) not null, Apellido varchar(20) not null , Sexo char(1) not null, Fecha_Nac date not null, Direccion varchar(100) not null, Telefono varchar(20)not null, Especialidad varchar(50) not null )
+
+create table HOSPITALIZACION ( id_Hospitalizacion  numeric not null primary key, Id_Hospital numeric not null, Id_Paciente numeric not null, Id_Medico numeric not null, Fecha_Ingreso date not null, Fecha_Salida date not null, Observaciones varchar(100), foreign key(Id_Hospital) references HOSPITALES(Id_Hospital), foreign key(Id_Paciente) references PACIENTES(Id_Paciente), foreign key(Id_Medico )references MEDICOS(Id_medico)
+
+INSERT INTO municipios (codmunicipio, municipio) VALUES (1, 'MOCOA')
+(568, 'PUERTO ASIS'),
+(569, 'PUERTO CAICEDO'),
+(571, 'PUERTO GUZMAN'),
+(573, 'LEGUÍZAMO'),
+(749, 'SIBUNDOY'),
+(755, 'SAN FRANCISCO'),
+(757, 'SAN MIGUEL'),
+(760, 'SANTIAGO'),
+(865, 'VALLE DEL GUAMU'),
+(885, 'VILLAGARZÓN');
